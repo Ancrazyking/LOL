@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lolCRM:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="lolCRM.war">
+      <element id="artifact" artifact-name="lolCRM:war exploded" />
+    </root>
+  </artifact>
+</component>
