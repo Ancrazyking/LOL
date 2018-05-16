@@ -6,12 +6,17 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="ancrazyking" uri="http://ancrazyking.com/common/"%>
 
 <html>
 <head>
     <title>lol英雄基本信息</title>
 
+   <%-- <style>
+        *{padding:0;margin:0}
+        html{overflow:hidden}
+    </style>--%>
     <!--加载所有的CSS js 以及 fonts-->
 
     <!-- Bootstrap Core CSS -->
@@ -52,6 +57,7 @@
 </head>
 <body>
 <div id="wrapper">
+
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation"
@@ -210,17 +216,154 @@
             </div>
             <!-- /.col-lg-12 -->
         </div>
+
+
+        <!-- /.row -->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-inline" action="${pageContext.request.contextPath }/hero/list" method="post">
+                    <div class="form-group">
+                        <label for="heroName">英雄名称</label>
+                        <input type="text" class="form-control" id="heroName" value="${heroName}" name="heroName"><!--custName-->
+                    </div>
+                    <div class="form-group">
+                        <label for="heroCamp">英雄阵营</label>
+                        <select	class="form-control" id="heroCamp" placeholder="英雄阵营" name="heroCamp"><!--custSource-->
+                            <option value="">--请选择--</option>
+                            <c:forEach items="${campType}" var="item"><!--fromCamp-->
+                                <option value="${item.dict_id}"<c:if test="${item.dict_id ==heroCamp}"> selected</c:if>>${item.dict_item_name }</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="heroLocation">英雄定位</label>
+                        <select	class="form-control" id="heroLocation"  name="heroLocation"><!--custIndustry-->
+                            <option value="">--请选择--</option>
+                            <c:forEach items="${locationType}" var="item">
+                                <option value="${item.dict_id}"<c:if test="${item.dict_id == heroLocation}"> selected</c:if>>${item.dict_item_name }</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="heroSex">英雄性别</label>
+                        <select	class="form-control" id="heroSex" name="heroSex"><!--custLevel-->
+                            <option value="">--请选择--</option>
+                            <c:forEach items="${sexType}" var="item">
+                                <option value="${item.dict_id}"<c:if test="${item.dict_id == heroSex}"> selected</c:if>>${item.dict_item_name }</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">查询</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">英雄信息列表</div>
+                    <!-- /.panel-heading -->
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>英雄头像</th>
+                            <th>英雄称号</th>
+                            <th>英雄名称</th>
+                            <th>英雄性别</th>
+                            <th>英雄定位</th>
+                            <th>所属阵营</th>
+                            <th>英雄描述</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${page.rows}" var="row">
+                            <tr>
+                                <td>${row.hero_id}</td>
+                                <td>${row.hero_pic}</td>
+                                <td>${row.hero_honour}</td>
+                                <td>${row.hero_name}</td>
+                                <td>${row.hero_sex}</td>
+                                <td>${row.hero_camp}</td>
+                                <td>${row.hero_description}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#heroEditDialog" onclick="editHero(${row.hero_id})">修改</a>
+                                    <a href="#" class="btn btn-danger btn-xs" onclick="deleteHero(${row.hero_id})">删除</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+         <%--               <tr>
+                            <td>1</td>
+                            <td><img src="${pageContext.request.contextPath}/lol/盖伦.png" width="50px" height="50px"></td>
+                            <td>德玛西亚之力</td>
+                            <td>盖伦</td>
+                            <td>男</td>
+                            <td>坦克/战士</td>
+                            <td>德玛西亚</td>
+                            <td>德玛西亚</td>
+                            <td>
+                                <a href="#" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#heroEditDialog" onclick="editHero(${row.hero_id})">修改</a>
+                                <a href="#" class="btn btn-danger btn-xs" onclick="deleteHero(${row.hero_id})">删除</a>
+                            </td>
+                        </tr>--%>
+                    </table>
+                    <div class="col-md-12 text-right">
+                        <ancrazyking:page url="${pageContext.request.contextPath }/lol/hero/list" />
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 
 
 
+<script type="text/javascript">
+    function editHero(id)
+    {
+
+
+
+
+
+    }
+
+
+    function deleteHero(id)
+    {
+
+
+
+
+    }
 
 
 
 
 
 
-
+</script>
 </body>
 </html>

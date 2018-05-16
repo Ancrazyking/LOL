@@ -10,9 +10,31 @@ public class Hero
     private String hero_honour;
     private String hero_name;
     private String hero_sex;
-    private Integer camp_id;
+    private String hero_camp;
     private String hero_pic;
     private String hero_description;
+    private String hero_location;
+
+
+    public String getHero_camp()
+    {
+        return hero_camp;
+    }
+
+    public void setHero_camp(String hero_camp)
+    {
+        this.hero_camp = hero_camp;
+    }
+
+    public String getHero_location()
+    {
+        return hero_location;
+    }
+
+    public void setHero_location(String hero_location)
+    {
+        this.hero_location = hero_location;
+    }
 
     public Integer getHero_id()
     {
@@ -52,16 +74,6 @@ public class Hero
     public void setHero_sex(String hero_sex)
     {
         this.hero_sex = hero_sex;
-    }
-
-    public Integer getCamp_id()
-    {
-        return camp_id;
-    }
-
-    public void setCamp_id(Integer camp_id)
-    {
-        this.camp_id = camp_id;
     }
 
     public String getHero_pic()

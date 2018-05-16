@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--查询符合条件的结果的条数-->
+<mapper namespace="com.ancrazyking.dao.HeroDao">
+    <select id="heroCountByQueryVo" parameterType="QueryVo" resultType="Integer">
+        select count(*) from hero
+        <where>
+            <if test="heroName!=null and heroName!='' ">
+                hero_name=#{heroName}
+            </if>
+            <if test="heroCamp!=null and heroCamp!=''">
+                hero_camp=#{heroCamp}
+            </if>
+            <if test="heroLocation!=null and heroLocation!=''">
+                hero_location=#{heroLocation}
+            </if>
+            <if test="heroSex!=null and heroSex!=''">
+                hero_sex=#{heroSex}
+            </if>
+        </where>
+    </select>
+
+
+
+    <select id="selectHeroListByQueryVo" parameterType="QueryVo" resultType="Hero">
+        select * from hero
+        <where>
+            <if test="heroName!=null and heroName!=''">
+                hero_name=#{heroName}
+            </if>
+            <if test="heroCamp!=null and heroCamp!=''">
+                hero_camp=#{heroCamp}
+            </if>
+            <if test="heroLocation!=null and heroLocation!=''">
+                hero_location=#{heroLocation}
+            </if>
+            <if test="heroSex!=null and heroSex!=''">
+                hero_sex=#{heroSex}
+            </if>
+        </where>
+    </select>
+</mapper>
